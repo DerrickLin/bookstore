@@ -28,8 +28,8 @@ def sign_in(request):
 
     return render(request, 'login.html', locals())
 
-def Book(request):
-    return render(request, 'base.html', locals())
+# def Book(request):
+#     return render(request, 'book.html', locals())
 
 # 登出
 def log_out(request):

@@ -15,7 +15,7 @@ class BookData(models.Model):
     category=models.ForeignKey(BookCategory,on_delete=models.CASCADE,max_length=8,null=False)
     author=models.CharField(max_length=100,null=True)
     publisher=models.CharField(max_length=100,null=True)
-    publisher_date=models.DateField(null=True, max_length=40)
+    publish_date=models.DateField(null=True, max_length=40)
     summary=models.CharField(max_length=1000,null=True)
     price=models.IntegerField(null=True)
     keeper_id=models.IntegerField(null=True)
