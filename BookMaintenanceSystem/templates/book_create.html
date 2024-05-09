@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}
+    書籍新增
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div class="d-flex justify-content-between align-items-center mb-2">
+    <h1>書籍新增</h1>
+    <div>
+        <button type="submit" class="btn btn-outline-primary" onclick="window.location.href='{% url 'Book' %}'">回書籍查詢</button>
+    </div>
+</div>
+ 
+    <div class="p-4 mb-2 text-dark lookup-form-bg">
+    <form class="row g-2" action="{% url 'Create' %}" method="POST" name="form2">
+        {% csrf_token %}
+        <div class="col-12">
+          <label for="bookname" class="form-label"><span style="color:red;">* </span>書名</label>
+          <input type="text" class="form-control" id="bookname" name="book_name" required>
+        </div>
+
+        <div class="col-12">
+            <label for="inputState" class="form-label"><span style="color:red;">* </span>書籍類別</label>
+            <select id="inputState" class="form-select" name="category_id" required>
+              <option value="{{category_name}}">----------------</option>
+              {% for category_id, category_name in categories %}
+                <option value="{{ category_id }}">{{ category_name }}</option>
+              {% endfor %}
+            </select> 
+        </div>
+
+
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">作者</label>
+            <input type="text" class="form-control" id="inputAddress" name="book_author">
+        </div>
+
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">出版社</label>
+            <input type="text" class="form-control" id="inputAddress" name="publisher">
+        </div>
+
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">出版日期</label>
+            <input type="date" class="form-control" id="inputAddress" name="publish_date">
+        </div>
+
+        <div class="col-12">
+            <label for="floatingTextarea2" class="form-label">內容簡介</label>
+            <textarea class="form-control" placeholder="最多輸入1000字" id="floatingTextarea2" style="height: 200px" name="summary"></textarea>
+        </div>
+
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">價格</label>
+            <input type="text" class="form-control" id="inputAddress" name="price">
+        </div>
+
+
+        <div class="col-12">
+            <label for="borrower" class="form-label">借閱人</label>
+            <select id="borrower" class="form-select" name="borrower_id">
+              <option value="">---------</option>
+              {% for borrower_id, username in usernames %}
+                <option value="{{ borrower_id }}">{{ username }}</option>
+              {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-12">
+            <label for="status" class="form-label"><span style="color:red;">* </span>借閱狀態</label>
+            <select id="status" class="form-select" name="book_status" required>
+              <option value="">---------</option>
+              {% for code_id, code_name in bookstatus %}
+                <option value="{{ code_id }}">{{ code_name }}</option>
+              {% endfor %}
+            </select>
+        </div>
+        
+        <script src="{% static 'js/create_status.js' %}"></script>
+
+        <div class="col-12">
+            <br>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button type="submit" class="btn btn-primary">新增</button>
+            </div>
+        </div> 
+    </form>
+    </div>
+
+{% endblock %}

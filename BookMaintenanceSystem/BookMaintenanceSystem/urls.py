@@ -28,4 +28,6 @@ urlpatterns = [
     path("book/", bviews.Book, name='Book'),
     path("logout/", aviews.log_out, name='Logout'),
     path("register/", aviews.register, name='Register'),
+    path('book/<int:book_id>/', bviews.book_detail, name='book_detail'),
+    path("book/create/", bviews.book_create, name='Create'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
