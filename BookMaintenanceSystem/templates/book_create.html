@@ -54,10 +54,11 @@
         </div>
 
         <div class="col-12">
-            <label for="inputAddress" class="form-label">價格</label>
-            <input type="text" class="form-control" id="inputAddress" name="price">
+            <label for="price" class="form-label">價格</label>
+            <input type="number" class="form-control" id="price" name="price">
         </div>
 
+        <script src="{% static 'js/only_digit_input.js' %}"></script>
 
         <div class="col-12">
             <label for="borrower" class="form-label">借閱人</label>

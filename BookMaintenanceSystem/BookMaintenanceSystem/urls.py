@@ -30,4 +30,5 @@ urlpatterns = [
     path("register/", aviews.register, name='Register'),
     path('book/<int:book_id>/', bviews.book_detail, name='book_detail'),
     path("book/create/", bviews.book_create, name='Create'),
+    path("book_lend_records/<int:book_id>", bviews.book_lend_records, name='BookLendRecords'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

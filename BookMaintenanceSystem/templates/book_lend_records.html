@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Book Lend Records{% endblock %}
+
+{% block content %}
+    <h1>借閱紀錄</h1>
+    <table class="table table-striped">
+        <thead align="center">
+            <tr>
+                <th><strong>借閱日期</strong></th>
+                <th><strong>借閱人編號</strong></th>
+                <th><strong>借閱人姓名</strong></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for lend_record in lend_records %}
+                <tr align="center">
+                    <td>{{ lend_record.borrow_date|date:"Y/m/d"}}</td>
+                    <td>{{ lend_record.borrow.id }}</td>
+                    <td>{{ lend_record.borrow }}</td>
+                   
+                </tr>
+            {% endfor %}
+        </tbody> 
+    </table> 
+{% endblock %}

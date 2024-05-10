@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
@@ -62,9 +63,30 @@ def book_create(request):
         borrower_id = request.POST.get("borrower_id")
         book_status = request.POST.get("book_status")
         
+        # 檢查價格是否是空字符串
+        if price == '':
+            price = None
+        else:
+            price = int(price)
+            
+        # 檢查出版日期是否是空字符串
+        if publish_date == '':
+            publish_date = None
+            
         category = BookCategory.objects.get(category_id=category_id)
         status = BookCode.objects.get(code_id=book_status)
         book = BookData(name=book_name, category=category, author=author, publisher=publisher, publish_date=publish_date, summary=summary, price=price, keeper_id=borrower_id, status=status)
         book.save()
+        
+        if borrower_id:
+            borrower = Student.objects.get(id=borrower_id)
+            lend_record = BookLendRecord(book=book, borrow=borrower, borrow_date=datetime.now().date())
+            lend_record.save()
         return redirect(reverse('Book'))
     return render(request, 'book_create.html', locals())
+
+
+def book_lend_records(request, book_id):
+    book = get_object_or_404(BookData, id=book_id)
+    lend_records = BookLendRecord.objects.filter(book=book)
+    return render(request, 'book_lend_records.html', locals())
