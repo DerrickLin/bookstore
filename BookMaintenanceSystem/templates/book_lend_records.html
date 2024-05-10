@@ -3,7 +3,13 @@
 {% block title %}Book Lend Records{% endblock %}
 
 {% block content %}
-    <h1>借閱紀錄</h1>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <h1>借閱紀錄</h1>
+        <div>
+            <button type="submit" class="btn btn-outline-primary" onclick="window.location.href='{% url 'Book' %}'">回書籍查詢</button>
+        </div>
+    </div>
+    
     <table class="table table-striped">
         <thead align="center">
             <tr>

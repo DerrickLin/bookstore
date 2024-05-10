@@ -6,7 +6,13 @@
 
 {% block content %}
 {% load static %}
-    <h1>書籍維護</h1>
+    <div class="d-flex justify-content-between align-items-center mb-2">
+        <h1>書籍維護</h1>
+        <div>
+            <button type="submit" class="btn btn-outline-primary" onclick="window.location.href='{% url 'Book' %}'">回書籍查詢</button>
+        </div>
+    </div>
+    
     <div class="p-4 mb-2 text-dark lookup-form-bg">
     <form class="row g-2">
         <div class="col-12">
@@ -49,7 +55,7 @@
 
         <div class="col-12">
             <label for="inputAddress" class="form-label">價格</label>
-            <input type="text" class="form-control" id="inputAddress" value="{{book.price}}" readonly>
+            <input type="text" class="form-control" id="inputAddress" value="{{book.price|default:""}}" readonly>
         </div>
 
         <div class="col-12">
@@ -66,7 +72,7 @@
     <div class="col-12">
         <br>
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <button type="submit" class="btn btn-primary" onclick="window.location.href='{% url 'Book' %}'">回到首頁</button>
+            <button type="submit" class="btn btn-primary" onclick="window.location.href='{% url 'Edit' book.id %}'">修改</button>
         </div>
     </div> 
     </div>
