@@ -86,10 +86,11 @@
           <td>
               <button type="submit" class="btn btn-primary me-3" onclick="window.location.href='{% url 'BookLendRecords' book.id %}'">借閱紀錄</button>
               <button type="submit" class="btn btn-success me-3" onclick="window.location.href='{% url 'Edit' book.id %}'">編輯</button>
-              <button type="submit" class="btn btn-danger me-3" >刪除</button>
+              <button type="submit" class="btn btn-danger me-3" id="delete-book" data-book-id="{{ book.id }}" data-book-name="{{ book.name }}">刪除</button>
           </td>
         </tr>
       {% endfor %}
+      <script src="{% static 'js/delete_book.js' %}"></script>
     </tbody>
   </table>
 {% endblock %}

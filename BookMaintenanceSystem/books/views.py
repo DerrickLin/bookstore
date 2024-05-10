@@ -3,10 +3,11 @@ from datetime import datetime
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.db.models import Q, Case, When, Value, CharField, F
+from django.db.models import Q
 from .models import BookData, BookCategory, BookCode, BookLendRecord
 from accounts.models import Student
-# from .forms import BookQueryForm
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @login_required(login_url='/login/')
@@ -87,12 +88,14 @@ def book_create(request):
     return render(request, 'book_create.html', locals())
 
 
+@login_required(login_url='/login/')
 def book_lend_records(request, book_id):
     book = get_object_or_404(BookData, id=book_id)
     lend_records = BookLendRecord.objects.filter(book=book)
     return render(request, 'book_lend_records.html', locals())
 
 
+@login_required(login_url='/login/')
 def book_edit(request, book_id):
     book = get_object_or_404(BookData, id=book_id)
     categories = list(BookCategory.objects.values_list('category_id', 'category_name'))
@@ -135,3 +138,14 @@ def book_edit(request, book_id):
             lend_record.save()
         return redirect(reverse('book_detail', args=[book.id]))
     return render(request, 'book_edit.html', locals())
+
+
+@csrf_exempt
+@login_required(login_url='/login/')
+def book_delete(request, book_id):
+    book = get_object_or_404(BookData, id=book_id)
+    if book.status.code_id == 'B':
+        return JsonResponse({'message': 'unable'})
+    else:
+        book.delete()
+        return JsonResponse({'message': 'success'})
