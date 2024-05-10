@@ -10,18 +10,18 @@ $(document).ready(function() {
 
         function deleteBook(bookId) {
             $.ajax({
-                url: '/book_delete/' + bookId + '/',
+                url: '/book_delete/' + bookId,
                 type: 'POST',
                 headers: {
                     'X-CSRFToken': '{{ csrf_token }}'
                 },
                 success: function(response) {
                     //alert(response.message);
-                    if (response.message === 'success') {
-                        // 從前端移除已刪除的書籍
-                        alert("刪除成功");
-                    } else if(response.message === 'unable'){
+                    if (response.message === 'unable') {
                         alert("此書外借中，無法刪除");
+                    } else if (response.message === 'success'){
+                        alert("刪除成功");
+                        window.location.href = '/book/';
                     }
                 },
         

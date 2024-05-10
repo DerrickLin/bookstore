@@ -126,6 +126,9 @@ def book_edit(request, book_id):
         # 檢查出版日期是否是空字符串
         if publish_date == '':
             publish_date = None
+        
+        if borrower_id == '':
+            borrower_id = None
             
         category = BookCategory.objects.get(category_id=category_id)
         status = BookCode.objects.get(code_id=book_status)
@@ -144,8 +147,11 @@ def book_edit(request, book_id):
 @login_required(login_url='/login/')
 def book_delete(request, book_id):
     book = get_object_or_404(BookData, id=book_id)
-    if book.status.code_id == 'B':
-        return JsonResponse({'message': 'unable'})
-    else:
+    if book.status.code_id != 'B':
         book.delete()
         return JsonResponse({'message': 'success'})
+    else:
+        return JsonResponse({'message': 'unable'})
+       
+    
+    

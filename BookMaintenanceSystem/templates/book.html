@@ -18,7 +18,7 @@
     <div class="col-md-6">
         <label for="category_id" class="form-label"><strong>書籍類別</strong></label>
         <select id="category_id" class="form-select" name="category_id">
-          <option value="{{category_name}}"><strong>----------------書籍類別----------------</strong></option>
+          <option value=""><strong>----------------書籍類別----------------</strong></option>
           {% for category_id, category_name in categories %}
             <option value="{{ category_id }}">{{ category_name }}</option>
           {% endfor %}

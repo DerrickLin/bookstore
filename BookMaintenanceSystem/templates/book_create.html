@@ -63,7 +63,7 @@
 
         <div class="col-12">
             <label for="borrower" class="form-label">借閱人</label>
-            <select id="borrower" class="form-select" name="borrower_id" required>
+            <select id="borrower" class="form-select" name="borrower_id">
               <option value="">---------</option>
               {% for borrower_id, username in usernames %}
                 <option value="{{ borrower_id }}">{{ username }}</option>
