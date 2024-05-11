@@ -35,7 +35,7 @@
         </a>
         <div class="col-sm-1" >
             {% if user.is_authenticated %}
-            <a type="button" class="btn" href="{% url 'Logout' %}" style="color: white; background-color: #5ca2e7;">Log Out</a>
+            <a type="button" class="btn btn-warning" href="{% url 'Logout' %}">Log Out</a>
             {% else %}
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a type="button" class="btn btn-outline-light me-1" href="{% url 'Login' %}">登入</a>
