@@ -21,6 +21,7 @@ $(document).ready(function() {
                         alert("此書外借中，無法刪除");
                     } else if (response.message === 'success'){
                         alert("刪除成功");
+                        // 重新導向至書籍查詢頁面
                         window.location.href = '/book/';
                     }
                 },

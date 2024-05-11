@@ -147,11 +147,12 @@ def book_edit(request, book_id):
 @login_required(login_url='/login/')
 def book_delete(request, book_id):
     book = get_object_or_404(BookData, id=book_id)
-    if book.status.code_id != 'B':
+    # 如果書籍狀態是借出中，則無法刪除
+    if book.status.code_id == 'B':
+        return JsonResponse({'message': 'unable'})
+    else:
         book.delete()
         return JsonResponse({'message': 'success'})
-    else:
-        return JsonResponse({'message': 'unable'})
        
     
     
