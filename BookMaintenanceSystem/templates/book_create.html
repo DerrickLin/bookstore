@@ -19,7 +19,7 @@
         {% csrf_token %}
         <div class="col-12">
           <label for="bookname" class="form-label"><span style="color:red;">* </span><strong>書名</strong></label>
-          <input type="text" class="form-control" id="bookname" name="book_name" required>
+          <input type="text" class="form-control" id="bookname" name="book_name" maxlength="100" required>
         </div>
 
         <div class="col-12">
@@ -35,12 +35,12 @@
 
         <div class="col-12">
             <label for="inputAddress" class="form-label"><strong>作者</strong></label>
-            <input type="text" class="form-control" id="inputAddress" name="book_author">
+            <input type="text" class="form-control" id="inputAddress" name="book_author" maxlength="100">
         </div>
 
         <div class="col-12">
             <label for="inputAddress" class="form-label"><strong>出版社</strong></label>
-            <input type="text" class="form-control" id="inputAddress" name="publisher">
+            <input type="text" class="form-control" id="inputAddress" name="publisher" maxlength="100">
         </div>
 
         <div class="col-12">
@@ -50,7 +50,7 @@
 
         <div class="col-12">
             <label for="floatingTextarea2" class="form-label"><strong>內容簡介</strong></label>
-            <textarea class="form-control" placeholder="最多輸入1000字" id="floatingTextarea2" style="height: 200px" name="summary"></textarea>
+            <textarea class="form-control" placeholder="最多輸入1000字" id="floatingTextarea2" style="height: 200px" name="summary" maxlength="1000"></textarea>
         </div>
 
         <div class="col-12">
