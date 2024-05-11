@@ -16,22 +16,22 @@
     <div class="p-4 mb-2 text-dark lookup-form-bg">
     <form class="row g-2">
         <div class="col-12">
-          <label for="inputAddress" class="form-label"><span style="color:red;">* </span>書名</label>
+          <label for="inputAddress" class="form-label"><span style="color:red;">* </span><strong>書名</strong></label>
           <input type="text" class="form-control" id="inputAddress" value="{{book.name}}" readonly>
         </div>
 
         <div class="col-12">
-          <label for="inputAddress2" class="form-label"><span style="color:red;">* </span>書籍類別</label>
+          <label for="inputAddress2" class="form-label"><span style="color:red;">* </span><strong>書籍類別</strong></label>
           <input type="text" class="form-control" id="inputAddress2" value="{{book.category.category_name}}" disabled>
         </div>
 
         <div class="col-12">
-            <label for="inputAddress" class="form-label">作者</label>
+            <label for="inputAddress" class="form-label"><strong>作者</strong></label>
             <input type="text" class="form-control" id="inputAddress" value="{{book.author}}" readonly>
         </div>
 
         <div class="col-12">
-            <label for="inputAddress" class="form-label">出版社</label>
+            <label for="inputAddress" class="form-label"><strong>出版社</strong></label>
             {% if book.publisher == None %}
                 <input type="text" class="form-control" id="inputAddress" value="" readonly>
             {% else %}
@@ -40,12 +40,12 @@
         </div>
 
         <div class="col-12">
-            <label for="inputAddress" class="form-label">出版日期</label>
+            <label for="inputAddress" class="form-label"><strong>出版日期</strong></label>
             <input type="text" class="form-control" id="inputAddress" value="{{book.publish_date|date:"Y/m/d"}}" readonly>
         </div>
 
         <div class="col-12">
-            <label for="floatingTextarea2" class="form-label">內容簡介</label>
+            <label for="floatingTextarea2" class="form-label"><strong>內容簡介</strong></label>
             {% if book.summary == None %}
                 <textarea class="form-control" id="floatingTextarea2" style="height: 200px" readonly></textarea>
             {% else %}
@@ -54,17 +54,17 @@
         </div>
 
         <div class="col-12">
-            <label for="inputAddress" class="form-label">價格</label>
+            <label for="inputAddress" class="form-label"><strong>價格</strong></label>
             <input type="text" class="form-control" id="inputAddress" value="{{book.price|default:""}}" readonly>
         </div>
 
         <div class="col-12">
-            <label for="inputAddress2" class="form-label">借閱人</label>
+            <label for="inputAddress2" class="form-label"><strong>借閱人</strong></label>
             <input type="text" class="form-control" id="inputAddress2" value="{{keeper_name|default:"---------"}}" disabled>
         </div> 
 
         <div class="col-12">
-            <label for="inputAddress" class="form-label"><span style="color:red;">* </span>借閱狀態</label>
+            <label for="inputAddress" class="form-label"><span style="color:red;">* </span><strong>借閱狀態</strong></label>
             <input type="text" class="form-control" id="inputAddress" value="{{book.status.code_name}}" disabled>
         </div>
        

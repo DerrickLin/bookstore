@@ -2,18 +2,18 @@ var codeBorrowed = 'B';
 var codeAvailable = 'Y';
 var codeUnavailable = 'N';
 $(document).ready(function() {
-    // 选择借阅人时自动选择对应的借阅状态为"已借出"
+
     $('#borrower').change(function() {
         
         console.log(codeBorrowed);
         var borrowerId = $(this).val();
         var statusSelect = $('#status');
         
-        // 重置借阅状态选项
+        // 清空狀態選單
         statusSelect.val('');
         
         if (borrowerId) {
-            // 选中"已借出"的选项
+            // 借閱人選擇了借閱人，則狀態選單設置為已借出
             statusSelect.val(codeBorrowed);
         }
     });
