@@ -13,7 +13,6 @@
     <div class="col-12">
       <label for="bookName" class="form-label"><strong>書名</strong></label>
       <input type="text" class="form-control" id="bookName", name="book_name">
-      {% comment %} {{ form.book_name }} {% endcomment %}
     </div>
     <div class="col-md-6">
         <label for="category_id" class="form-label"><strong>書籍類別</strong></label>
@@ -50,6 +49,7 @@
         <button type="reset" class="btn btn-danger me-3">清除</button>
         <button type="button" class="btn btn-success me-3" onclick="window.location.href='{% url 'Create' %}'">新增</button>
     </div>
+    <script src="{% static 'js/keep_form_value.js' %}"></script>
   </form>
   </div>
   <hr>

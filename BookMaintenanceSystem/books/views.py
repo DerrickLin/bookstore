@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
+@csrf_exempt
 @login_required(login_url='/login/')
 def Book(request):
     categories = list(BookCategory.objects.values_list('category_id', 'category_name'))
