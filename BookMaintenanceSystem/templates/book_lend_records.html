@@ -22,8 +22,8 @@
             {% for lend_record in lend_records %}
                 <tr align="center">
                     <td>{{ lend_record.borrow_date|date:"Y/m/d"}}</td>
-                    <td>{{ lend_record.borrow.id }}</td>
-                    <td>{{ lend_record.borrow }}</td>
+                    <td>{{ lend_record.borrower.id }}</td>
+                    <td>{{ lend_record.borrower }}</td>
                    
                 </tr>
             {% endfor %}

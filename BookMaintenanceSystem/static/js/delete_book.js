@@ -2,8 +2,7 @@ $(document).ready(function() {
     $(document).on('click', '#delete-book', function() {
         var bookId = $(this).data('book-id');
         var bookName = $(this).data('book-name');
-        console.log(bookId);
-        console.log(bookName);
+  
         if (confirm('確定要刪除書籍 : [' + bookName + '] 嗎?')) {
             deleteBook(bookId);
         }

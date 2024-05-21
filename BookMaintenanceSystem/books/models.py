@@ -23,6 +23,6 @@ class BookData(models.Model):
 
 class BookLendRecord(models.Model):
     book=models.ForeignKey(BookData,on_delete=models.CASCADE,null=False)
-    borrow=models.ForeignKey(Student,on_delete=models.CASCADE,null=False)
+    borrower=models.ForeignKey(Student,on_delete=models.CASCADE,null=False)
     borrow_date=models.DateField(null=True)
 

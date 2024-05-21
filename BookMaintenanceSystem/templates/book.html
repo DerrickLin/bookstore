@@ -6,6 +6,14 @@
 
 {% block content %}
 {% load static %}
+
+{% if message %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>{{ message }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+{% endif %}
+
 <h1>書籍查詢</h1>
 <div class="p-4 mb-2 text-dark lookup-form-bg">
 <form class="row g-2" action="{% url 'Book' %}" method="POST" name="form1">
@@ -69,7 +77,7 @@
       {% for book in books %}
         <tr align="center">
           <td>{{ book.category.category_name }}</td>
-          <td><a href="{% url 'book_detail' book.id %}" style="text-decoration:none;">{{ book.name }}</a></td>
+          <td><a href="{% url 'Detail' book.id %}" style="text-decoration:none;">{{ book.name }}</a></td>
           <td>{{ book.publish_date|date:"Y/m/d" }}</td>
           <td>{{ book.status.code_name }}</td>
           <td>

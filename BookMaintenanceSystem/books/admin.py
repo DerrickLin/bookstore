@@ -17,7 +17,7 @@ admin.site.register(models.BookCategory, BookCategoryAdmin)
 
 
 class BookLendRecordAdmin(admin.ModelAdmin):
-    list_display = ('id', 'book', 'borrow', 'borrow_date')
+    list_display = ('id', 'book', 'borrower', 'borrow_date')
     search_fields = ('book', 'borrow')
 admin.site.register(models.BookLendRecord, BookLendRecordAdmin)
 
