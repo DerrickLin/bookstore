@@ -9,35 +9,45 @@ from accounts.models import Student
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect
+from .forms import BookForm
 
 # Create your views here.
 @csrf_exempt
 @login_required(login_url='/login/')
 def Book(request):
-    categories = list(BookCategory.objects.values_list('category_id', 'category_name'))
-    usernames = list(Student.objects.values_list('id', 'username'))
-    bookstatus = list(BookCode.objects.values_list('code_id', 'code_name'))
+    # categories = list(BookCategory.objects.values_list('category_id', 'category_name'))
+    # usernames = list(Student.objects.values_list('id', 'username'))
+    # bookstatus = list(BookCode.objects.values_list('code_id', 'code_name'))
     books = BookData.objects.all()
     students = Student.objects.all().values('id', 'username')
     # 取得錯誤訊息
     message = request.GET.get('message', '')
     
+    form = BookForm()
+
     if request.method == "POST":
-        book_name = request.POST.get("book_name")
-        category_id = request.POST.get("category_id")
-        borrower_id = request.POST.get("borrower_id")
-        book_status = request.POST.get("book_status")
-        
-        conditions = Q()
-        if book_name:
-            conditions &= Q(name__contains=book_name)
-        if category_id:
-            conditions &= Q(category_id=category_id)
-        if borrower_id:
-            conditions &= Q(keeper_id=borrower_id)
-        if book_status:
-            conditions &= Q(status_id=book_status)
-        books = books.filter(conditions)
+        form = BookForm(request.POST)
+        if form.is_valid():
+            # book_name = request.POST.get("book_name")
+            # category_id = request.POST.get("category_id")
+            # borrower_id = request.POST.get("borrower_id")
+            # book_status = request.POST.get("book_status")
+            book_name = form.cleaned_data.get("book_name")
+            category_id = form.cleaned_data.get("category_id")
+            borrower_id = form.cleaned_data.get("borrower_id")
+            book_status = form.cleaned_data.get("book_status")
+                
+            conditions = Q()
+            if book_name:
+                conditions &= Q(name__contains=book_name)
+            if category_id:
+                conditions &= Q(category_id=category_id)
+            if borrower_id:
+                conditions &= Q(keeper_id=borrower_id)
+            if book_status:
+                conditions &= Q(status_id=book_status)
+            books = books.filter(conditions)
+
     return render(request, 'book.html', locals())
 
 
