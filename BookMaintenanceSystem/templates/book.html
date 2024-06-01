@@ -58,32 +58,33 @@
         <th colspan="3">操作</th>
       </tr>
     </thead>
-    <tbody> 
-      {% for book in books %}
-        <tr align="center">
-          <td>{{ book.category.category_name }}</td>
-          <td><a href="{% url 'Detail' book.id %}" style="text-decoration:none;">{{ book.name }}</a></td>
-          <td>{{ book.publish_date|date:"Y/m/d" }}</td>
-          <td>{{ book.status.code_name }}</td>
-          <td>
-            {% if book.keeper_id %}
-              {% for student in students %}
-                  {% if student.id == book.keeper_id %}
-                      {{ student.username }}
-                  {% endif %}
-              {% endfor %}
-            {% else %}
-                -
-            {% endif %}
-          </td>
-          <td>
-              <button type="submit" class="btn btn-primary me-3" onclick="window.location.href='{% url 'BookLendRecords' book.id %}'">借閱紀錄</button>
-              <button type="submit" class="btn btn-success me-3" onclick="window.location.href='{% url 'Edit' book.id %}'">編輯</button>
-              <button type="button" class="btn btn-danger me-3" id="delete-book" data-book-id="{{ book.id }}" data-book-name="{{ book.name }}">刪除</button>
-          </td>
-        </tr>
-      {% endfor %}
+    <tbody class="animate__animated animate__fadeInLeft animate__fast"> 
+        {% for book in books %}
+          <tr align="center">
+            <td>{{ book.category.category_name }}</td>
+            <td><a href="{% url 'Detail' book.id %}" style="text-decoration:none;">{{ book.name }}</a></td>
+            <td>{{ book.publish_date|date:"Y/m/d" }}</td>
+            <td>{{ book.status.code_name }}</td>
+            <td>
+              {% if book.keeper_id %}
+                {% for student in students %}
+                    {% if student.id == book.keeper_id %}
+                        {{ student.username }}
+                    {% endif %}
+                {% endfor %}
+              {% else %}
+                  -
+              {% endif %}
+            </td>
+            <td>
+                <button type="submit" class="btn btn-primary me-3" onclick="window.location.href='{% url 'BookLendRecords' book.id %}'">借閱紀錄</button>
+                <button type="submit" class="btn btn-success me-3" onclick="window.location.href='{% url 'Edit' book.id %}'">編輯</button>
+                <button type="button" class="btn btn-danger me-3" id="delete-book" data-book-id="{{ book.id }}" data-book-name="{{ book.name }}">刪除</button>
+            </td>
+          </tr>
+        {% endfor %}
       <script src="{% static 'js/delete_book.js' %}"></script>
     </tbody>
   </table>
+  <br><br><br>
 {% endblock %}

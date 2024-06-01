@@ -13,5 +13,5 @@ class BookForm(forms.Form):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['category_id'].choices = [('', '----------------書籍類別----------------')] + list(BookCategory.objects.values_list('category_id', 'category_name'))
-        self.fields['borrower_id'].choices = [('', '----------------借閱人---------------')] + list(Student.objects.values_list('id', 'username'))
+        self.fields['borrower_id'].choices = [('', '----------------借閱人------------------')] + list(Student.objects.values_list('id', 'username'))
         self.fields['book_status'].choices = [('', '----------------借閱狀態----------------')] + list(BookCode.objects.values_list('code_id', 'code_name'))

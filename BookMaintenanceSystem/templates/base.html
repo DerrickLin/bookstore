@@ -13,6 +13,9 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous">
         </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>{% block title %}{% endblock %}</title>
@@ -69,7 +72,37 @@
     <!-- Option 1: Bootstrap Bundle (includes Popper) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous">
-        </script>
-</body>
+    </script>
 
+<!-- Footer -->
+<footer class=" text-center " style="background-color:#b2d8f0;">
+    <!-- Grid container -->
+    <div class="container p-4">
+  
+      <!-- Section: Social media -->
+      <section class="mb-4">
+        <!-- Facebook -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="https://www.facebook.com/groups/131482166952084" role="button" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <!-- Google -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="https://me.ntue.edu.tw/" role="button" target="_blank"><i class="fab fa-google"></i></a>
+        <!-- Instagram -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="https://www.instagram.com/ntue_m.i.e/" role="button" target="_blank"><i class="fab fa-instagram"></i></a>
+        <!-- Github -->
+        <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="https://github.com/DerrickLin/bookstore" role="button" target="_blank"><i class="fab fa-github"></i></a>
+      </section>
+ 
+      <section class="mb-4">
+        <p>
+            動態網頁設計作業 : 圖書管理系統 (有點難，但學到很多&#128512;)
+        </p>
+      </section>
+    </div>
+
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+      © 2024 Copyright : NTUE MIE 林揚哲
+    </div>
+  </footer>
+
+
+</body>
 </html>
