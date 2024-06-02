@@ -10,7 +10,7 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect
 from .forms import BookForm
-from django.core.paginator import Paginator
+# from django.core.paginator import Paginator
 
 # Create your views here.
 @csrf_exempt

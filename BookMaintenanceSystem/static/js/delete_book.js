@@ -3,7 +3,7 @@ $(document).ready(function() {
         var bookId = $(this).data('book-id');
         var bookName = $(this).data('book-name');
   
-        if (confirm('確定要刪除書籍 : [' + bookName + '] 嗎?')) {
+        if (confirm('確定要刪除書籍 : ⟪' + bookName + '⟫ 嗎?')) {
             deleteBook(bookId);
         }
 
