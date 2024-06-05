@@ -9,8 +9,7 @@ from accounts.models import Student
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponseRedirect
-from .forms import BookForm
-# from django.core.paginator import Paginator
+from .forms import BookForm, BookCreateForm
 
 # Create your views here.
 @csrf_exempt
@@ -60,56 +59,50 @@ def book_detail(request, book_id):
 
 @login_required(login_url='/login/')
 def book_create(request):
-    categories = list(BookCategory.objects.values_list('category_id', 'category_name'))
+    # categories = list(BookCategory.objects.values_list('category_id', 'category_name'))
     usernames = list(Student.objects.values_list('id', 'username'))
     bookstatus = list(BookCode.objects.values_list('code_id', 'code_name'))
     message = request.GET.get('message', '')
     
     if request.method == "POST":
-        book_name = request.POST.get("book_name")
-        category_id = request.POST.get("category_id")
-        author = request.POST.get("book_author")
-        publisher = request.POST.get("publisher")
-        publish_date = request.POST.get("publish_date")
-        summary = request.POST.get("summary")
-        price = request.POST.get("price")
-        borrower_id = request.POST.get("borrower_id")
-        book_status = request.POST.get("book_status")
-    
-        # 檢查價格是否是空字符串
-        if price == '':
-            price = None
-        else:
-            price = int(price)
+        form = BookCreateForm(request.POST)
+        if form.is_valid():
+            book_name = form.cleaned_data.get("book_name")
+            category_id = form.cleaned_data.get("category_id")
+            author = form.cleaned_data.get("book_author")
+            publisher = form.cleaned_data.get("publisher")
+            publish_date = form.cleaned_data.get("publish_date")
+            summary = form.cleaned_data.get("summary")
+            price = form.cleaned_data.get("price")
+            borrower_id = request.POST.get("borrower_id")
+            book_status = request.POST.get("book_status")
             
-        # 檢查出版日期是否是空字符串
-        if publish_date == '':
-            publish_date = None
-        
-        # 檢查借閱者是否是為空
-        if borrower_id == '':
-            # 如果借閱者是空，則不允許新增，並且顯示錯誤訊息
-            message = '未選擇借閱者，無法新增'
-            redirect_url = reverse('Create') + '?message=' + message
+            # 檢查借閱者是否是為空
+            if borrower_id == '':
+                # 如果借閱者是空，則不允許新增，並且顯示錯誤訊息
+                message = '未選擇借閱者，無法新增'
+                redirect_url = reverse('Create') + '?message=' + message
+                return HttpResponseRedirect(redirect_url)
+            
+            category = BookCategory.objects.get(category_id=category_id)
+            status = BookCode.objects.get(code_id=book_status)
+            # 新增書籍資料
+            book = BookData(name=book_name, category=category, author=author, publisher=publisher, publish_date=publish_date, summary=summary, price=price, keeper_id=borrower_id, status=status)
+            book.save()
+            
+            # 如果有借閱者，新增借閱紀錄
+            if borrower_id:
+                borrowers = Student.objects.get(id=borrower_id)
+                lend_record = BookLendRecord(book=book, borrower=borrowers, borrow_date=datetime.now().date())
+                lend_record.save()
+                
+            # 新增成功後，導向書籍清單頁面
+            message = '成功新增 ⟪ ' + book_name + ' ⟫ 書籍'
+            redirect_url = reverse('Book') + '?message=' + message
             return HttpResponseRedirect(redirect_url)
-        
-        category = BookCategory.objects.get(category_id=category_id)
-        status = BookCode.objects.get(code_id=book_status)
-        # 新增書籍資料
-        book = BookData(name=book_name, category=category, author=author, publisher=publisher, publish_date=publish_date, summary=summary, price=price, keeper_id=borrower_id, status=status)
-        book.save()
-        
-        # 如果有借閱者，新增借閱紀錄
-        if borrower_id:
-            borrowers = Student.objects.get(id=borrower_id)
-            lend_record = BookLendRecord(book=book, borrower=borrowers, borrow_date=datetime.now().date())
-            lend_record.save()
-            
-        # 新增成功後，導向書籍清單頁面
-        message = '成功新增 ⟪ ' + book_name + ' ⟫ 書籍'
-        redirect_url = reverse('Book') + '?message=' + message
-        return HttpResponseRedirect(redirect_url)
-    
+    else:
+        form = BookCreateForm()
+  
     return render(request, 'book_create.html', locals())
 
 
@@ -133,6 +126,7 @@ def book_edit(request, book_id):
         keeper_name = keeper.username
         
     if request.method == "POST":
+        
         book_name = request.POST.get("book_name")
         category_id = request.POST.get("category_id")
         author = request.POST.get("book_author")

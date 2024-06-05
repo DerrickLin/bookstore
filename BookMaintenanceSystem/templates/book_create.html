@@ -26,43 +26,50 @@
         {% csrf_token %}
         <div class="col-12">
           <label for="bookname" class="form-label"><span style="color:red;">* </span><strong>書名</strong></label>
-          <input type="text" class="form-control" id="bookname" name="book_name" maxlength="100" required>
+          {% comment %} <input type="text" class="form-control" id="bookname" name="book_name" maxlength="100" required> {% endcomment %}
+          {{ form.book_name }}
         </div>
 
         <div class="col-12">
             <label for="inputState" class="form-label"><span style="color:red;">* </span><strong>書籍類別</strong></label>
-            <select id="inputState" class="form-select" name="category_id" required>
+            {% comment %} <select id="inputState" class="form-select" name="category_id" required>
               <option value="{{category_name}}">----------------</option>
               {% for category_id, category_name in categories %}
                 <option value="{{ category_id }}">{{ category_name }}</option>
               {% endfor %}
-            </select> 
+            </select> {% endcomment %}
+            {{ form.category_id }}
         </div>
 
 
         <div class="col-12">
             <label for="inputAddress" class="form-label"><strong>作者</strong></label>
-            <input type="text" class="form-control" id="inputAddress" name="book_author" maxlength="100">
+           {% comment %} <input type="text" class="form-control" id="inputAddress" name="book_author" maxlength="100">  {% endcomment %}
+            {{ form.book_author }}
         </div>
 
         <div class="col-12">
             <label for="inputAddress" class="form-label"><strong>出版社</strong></label>
-            <input type="text" class="form-control" id="inputAddress" name="publisher" maxlength="100">
+            {% comment %} <input type="text" class="form-control" id="inputAddress" name="publisher" maxlength="100"> {% endcomment %}
+            {{ form.publisher }}
         </div>
 
         <div class="col-12">
             <label for="inputAddress" class="form-label"><strong>出版日期</strong></label>
-            <input type="date" class="form-control" id="inputAddress" name="publish_date">
+            {% comment %} <input type="date" class="form-control" id="inputAddress" name="publish_date"> {% endcomment %}
+            {{ form.publish_date }}
         </div>
 
         <div class="col-12">
             <label for="floatingTextarea2" class="form-label"><strong>內容簡介</strong></label>
-            <textarea class="form-control" placeholder="最多輸入1000字" id="floatingTextarea2" style="height: 200px" name="summary" maxlength="1000"></textarea>
+            {% comment %} <textarea class="form-control" placeholder="最多輸入1000字" id="floatingTextarea2" style="height: 200px" name="summary" maxlength="1000"></textarea>  {% endcomment %}
+            {{ form.summary }}
         </div>
 
         <div class="col-12">
             <label for="price" class="form-label"><strong>價格</strong></label>
-            <input type="number" class="form-control" id="price" min="0" name="price">
+            {% comment %} <input type="number" class="form-control" id="price" min="0" name="price"> {% endcomment %}
+            {{ form.price }}
         </div>
 
         <script src="{% static 'js/only_digit_input.js' %}"></script>

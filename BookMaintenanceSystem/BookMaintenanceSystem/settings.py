@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-rev7&7e9#i-$c$g08^g(i$u=5by8rx7#nk!u$8yitk&wq6-i$3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 AUTH_USER_MODEL = 'accounts.Student'
 # Application definition
