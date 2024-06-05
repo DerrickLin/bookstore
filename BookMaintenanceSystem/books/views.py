@@ -126,7 +126,6 @@ def book_edit(request, book_id):
         keeper_name = keeper.username
         
     if request.method == "POST":
-        
         book_name = request.POST.get("book_name")
         category_id = request.POST.get("category_id")
         author = request.POST.get("book_author")
