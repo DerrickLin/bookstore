@@ -1,29 +1,110 @@
 修正內容
-===
+# Bookstore / 圖書管理系統
 
-- 借閱紀錄按日期排序
+這是一個以 Django 為後端框架、結合前端技術的圖書管理系統（Bookstore / Library Management System）。  
+可以用來管理書籍、讀者、借閱記錄等，是一個適合教學或小型專案用途的範例系統。
 
-- 借閱狀況為已借出，在沒有選擇借閱人狀況下要新增或編輯，會顯示錯誤訊息在畫面上方且不可新增或編輯
+---
 
-- 查詢功能與新增功能改用django提供的forms
+## 主要功能
 
-- 修正借閱紀錄model中borrower的名稱
+- 書籍的 **新增 / 刪除 / 編輯 / 查詢**  
+- 讀者 / 借閱人管理  
+- 借閱記錄：借書、還書、逾期管理  
+- 支援查詢篩選功能  
+- 在操作成功或失敗時顯示提示訊息（前端 UI 提示）  
+- 使用 jQuery 增強前端互動性  
+- 網頁版前端 UI (HTML / CSS / JavaScript)  
+- Django Forms 處理表單驗證、資料處理  
 
-- Student model中gender欄位在後端可以選擇 'M' or 'F'
+---
 
-- 改使用jquery
+## 專案架構（範例）
 
-- urls.py 中 name="book_detail" 改為 name = "Detail"，讓整體統一
+```
+bookstore/
+├── BookMaintenanceSystem/        ← Django 專案目錄
+│   ├── settings.py
+│   ├── urls.py
+│   ├── wsgi.py
+│   └── …  
+├── templates/                    ← 前端 HTML 模板們
+├── static/                       ← CSS / JS / 圖片等靜態資源
+├── requirements.txt              ← 專案相依套件
+├── .gitignore
+└── README.md
+```
 
-- print / console.log 註解或刪除
+---
 
-***
+## 安裝與啟動指南
 
-新增內容
-===
+以下是從零開始的步驟，假設使用 Python 及虛擬環境：
 
-- 新增或修改成功在頁面上方顯示成功訊息。
+```bash
+# 1. Clone 這個 repo
+git clone https://github.com/DerrickLin/bookstore.git
+cd bookstore
 
-- 加上footer
+# 2. 建立虛擬環境（以 venv 為例）
+python3 -m venv venv
+source venv/bin/activate   # 在 Windows 上用 venv\Scripts\activate
 
-- 新增動畫
+# 3. 安裝相依套件
+pip install -r requirements.txt
+
+# 4. 執行資料庫遷移
+python manage.py makemigrations
+python manage.py migrate
+
+# 5. 建立 superuser（管理帳戶，可登入 Django admin）
+python manage.py createsuperuser
+
+# 6. 啟動伺服器
+python manage.py runserver
+```
+
+啟動後，通常可以在瀏覽器打開 `http://127.0.0.1:8000/` （或 `http://localhost:8000/`）查看系統。
+
+---
+
+## 使用範例 / Screenshots
+
+> （這裡可以放一些系統畫面的截圖／操作流程圖片，讓使用者一目了然）
+
+例如：
+
+- 書籍列表頁面  
+- 書籍編輯／新增頁面  
+- 借閱記錄頁面  
+
+---
+
+## 技術棧（Tech Stack）
+
+| 類別 | 技術 / 工具 |
+|------|----------------|
+| 後端 | Python, Django |
+| 表單 / 驗證 | Django Forms |
+| 前端 | HTML, CSS, JavaScript, jQuery |
+| 資料庫 | Django 預設建議使用 SQLite（或可改為 MySQL / PostgreSQL 等） |
+| 相依套件 | 在 `requirements.txt` 中定義 |
+
+---
+
+## 貢獻方式
+
+歡迎對此專案提出 Issue 或 Pull Request，若有功能想新增或改善，也可以先開 Issue 討論。  
+
+---
+
+## 授權（License）
+
+（在這裡放你的授權條款，例如 MIT、Apache 2.0 等）  
+
+---
+
+## 聯絡方式
+
+- 作者：DerrickLin  
+- GitHub：[DerrickLin](https://github.com/DerrickLin)
