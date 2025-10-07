@@ -3,7 +3,7 @@
 
 這是一個以 Django 為框架、結合前後端技術的圖書管理系統（Bookstore / Library Management System）。  
 可以用來管理書籍、讀者、借閱記錄等。
-
+- [Demo影片連結](https://drive.google.com/file/d/1ZlGdQ_HcI8s69R3dgvp2nMGoTbS5NpS1/view?usp=drive_link)
 ---
 
 ## 主要功能
