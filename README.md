@@ -1,7 +1,7 @@
 修正內容
 # Bookstore / 圖書管理系統
 
-這是一個以 Django 為後端框架、結合前端技術的圖書管理系統（Bookstore / Library Management System）。  
+這是一個以 Django 為框架、結合前後端技術的圖書管理系統（Bookstore / Library Management System）。  
 可以用來管理書籍、讀者、借閱記錄等。
 
 ---
@@ -39,7 +39,7 @@ bookstore/
 
 ## 安裝與啟動指南
 
-以下是從零開始的步驟，假設使用 Python 及虛擬環境：
+使用 Python 及虛擬環境：
 
 ```bash
 # 1. Clone 這個 repo
@@ -64,7 +64,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-啟動後，通常可以在瀏覽器打開 `http://127.0.0.1:8000/` （或 `http://localhost:8000/`）查看系統。
+啟動後，可以在瀏覽器打開 `http://127.0.0.1:8000/` （或 `http://localhost:8000/`）查看系統。
 
 ---
 
