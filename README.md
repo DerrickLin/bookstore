@@ -2,7 +2,7 @@
 # Bookstore / 圖書管理系統
 
 這是一個以 Django 為後端框架、結合前端技術的圖書管理系統（Bookstore / Library Management System）。  
-可以用來管理書籍、讀者、借閱記錄等，是一個適合教學或小型專案用途的範例系統。
+可以用來管理書籍、讀者、借閱記錄等。
 
 ---
 
@@ -46,11 +46,11 @@ bookstore/
 git clone https://github.com/DerrickLin/bookstore.git
 cd bookstore
 
-# 2. 建立虛擬環境（以 venv 為例）
+# 2. 建立虛擬環境
 python3 -m venv venv
 source venv/bin/activate   # 在 Windows 上用 venv\Scripts\activate
 
-# 3. 安裝相依套件
+# 3. 安裝套件
 pip install -r requirements.txt
 
 # 4. 執行資料庫遷移
@@ -68,43 +68,18 @@ python manage.py runserver
 
 ---
 
-## 使用範例 / Screenshots
 
-> （這裡可以放一些系統畫面的截圖／操作流程圖片，讓使用者一目了然）
-
-例如：
-
-- 書籍列表頁面  
-- 書籍編輯／新增頁面  
-- 借閱記錄頁面  
-
----
-
-## 技術棧（Tech Stack）
+## Tech Stack
 
 | 類別 | 技術 / 工具 |
 |------|----------------|
 | 後端 | Python, Django |
 | 表單 / 驗證 | Django Forms |
 | 前端 | HTML, CSS, JavaScript, jQuery |
-| 資料庫 | Django 預設建議使用 SQLite（或可改為 MySQL / PostgreSQL 等） |
-| 相依套件 | 在 `requirements.txt` 中定義 |
+| 資料庫 | SQLite |
+| 相依套件 | 在 `requirements.txt` 中 |
 
 ---
 
-## 貢獻方式
 
-歡迎對此專案提出 Issue 或 Pull Request，若有功能想新增或改善，也可以先開 Issue 討論。  
 
----
-
-## 授權（License）
-
-（在這裡放你的授權條款，例如 MIT、Apache 2.0 等）  
-
----
-
-## 聯絡方式
-
-- 作者：DerrickLin  
-- GitHub：[DerrickLin](https://github.com/DerrickLin)
