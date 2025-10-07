@@ -1,4 +1,3 @@
-修正內容
 # Bookstore / 圖書管理系統
 
 這是一個以 Django 為框架、結合前後端技術的圖書管理系統（Bookstore / Library Management System）。  
